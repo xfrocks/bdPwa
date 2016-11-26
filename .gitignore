@@ -1,0 +1,4 @@
+.DS_Store
+*.devhelper
+library/bdPwa/DevHelper/Generated
+library/bdPwa/DevHelper/XFCP
