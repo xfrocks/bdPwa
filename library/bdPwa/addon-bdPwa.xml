@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="bdPwa" title="[bd] Progressive Web App" version_string="1.0.0-dev" version_id="1000000" url="" install_callback_class="" install_callback_method="" uninstall_callback_class="" uninstall_callback_method="">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners/>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups>
+    <group group_id="bdPwa" display_order="21" debug_only="0"/>
+    <option option_id="bdPwa_manifestDisplay" edit_format="select" data_type="string" can_backup="1">
+      <default_value>standalone</default_value>
+      <edit_format_params>fullscreen = {xen:phrase bdpwa_manifest_display_fullscreen}
+standalone = {xen:phrase bdpwa_manifest_display_standalone}
+minimal-ui = {xen:phrase bdpwa_manifest_display_minimal_ui}
+browser = {xen:phrase bdpwa_manifest_display_browser}</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="bdPwa" display_order="20"/>
+    </option>
+    <option option_id="bdPwa_manifestIcons" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value>styles/default/xenforo/logo.og.png</default_value>
+      <edit_format_params>rows=5</edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="bdPwa" display_order="30"/>
+    </option>
+    <option option_id="bdPwa_manifestShortName" edit_format="textbox" data_type="string" can_backup="1">
+      <default_value></default_value>
+      <edit_format_params></edit_format_params>
+      <sub_options></sub_options>
+      <relation group_id="bdPwa" display_order="10"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="bdpwa_manifest_display_browser" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Browser]]></phrase>
+    <phrase title="bdpwa_manifest_display_fullscreen" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Fullscreen]]></phrase>
+    <phrase title="bdpwa_manifest_display_minimal_ui" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Minimal UI]]></phrase>
+    <phrase title="bdpwa_manifest_display_standalone" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Standalone (feel like a native application)]]></phrase>
+    <phrase title="option_bdPwa_manifestDisplay" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Display Mode]]></phrase>
+    <phrase title="option_bdPwa_manifestDisplay_explain" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Display mode of the application (<a href="https://w3c.github.io/manifest/#display-modes" target="_blank" tabindex="-1">Documentation</a>).]]></phrase>
+    <phrase title="option_bdPwa_manifestIcons" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Icons]]></phrase>
+    <phrase title="option_bdPwa_manifestIcons_explain" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Icons of the application (<a href="https://w3c.github.io/manifest/#member-icons" target="_blank" tabindex="-1">Documentation</a>). Enter icon urls or relative paths, each one must be on its own line.]]></phrase>
+    <phrase title="option_bdPwa_manifestShortName" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Short Name]]></phrase>
+    <phrase title="option_bdPwa_manifestShortName_explain" version_id="1000000" version_string="1.0.0-dev"><![CDATA[Short name of the application (required by Chrome, <a href="https://w3c.github.io/manifest/#member-short_name" target="_blank" tabindex="-1">Documentation</a>). Leave blank to use board title.]]></phrase>
+    <phrase title="option_group_bdPwa" version_id="1000000" version_string="1.0.0-dev"><![CDATA[[bd] Progressive Web App]]></phrase>
+    <phrase title="option_group_bdPwa_description" version_id="1000000" version_string="1.0.0-dev"><![CDATA[PWA configuration and options.]]></phrase>
+  </phrases>
+  <route_prefixes>
+    <route_type type="public">
+      <prefix original_prefix="pwa" class="bdPwa_Route_Prefix_Pwa" build_link="data_only"/>
+    </route_type>
+  </route_prefixes>
+  <style_properties/>
+  <templates/>
+  <public_template_modifications>
+    <modification template="page_container_js_head" modification_key="bdpwa_page_container_js_head" description="Global script injection." execution_order="10" enabled="1" action="str_replace">
+      <find><![CDATA[<!--XenForo_Require:JS-->]]></find>
+      <replace><![CDATA[<xen:callback class="bdPwa_Listener" method="renderPageContainerJsHead" />
+$0]]></replace>
+    </modification>
+  </public_template_modifications>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>

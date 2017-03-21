@@ -2,3 +2,4 @@
 *.devhelper
 library/bdPwa/DevHelper/Generated
 library/bdPwa/DevHelper/XFCP
+FileSums.php
